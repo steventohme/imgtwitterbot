@@ -3,17 +3,18 @@ import time
 from imgfunctions import bw
 import os
 
-API_KEY = "XxQwdIWue2kxq6bOCniFl1Noa"
-API_SECRET = "5WZB9xb7PFVW3h4CFzfS40y6LcAXapO2SjEcTp2MNWlzUpskpe"
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAEgcXgEAAAAAwrG1icgYI1tX7jM6uLKic6nfywE%3DzNqbr9L1kvPFgvvA9FFfRDSYP9ygl2CUzjgpFLeQZqPo73UuZ1"
-ACCESS_TOKEN = "1449748044644294657-ZLavMjfevTetYnJdCDPDfrWeT3Uo32"
-ACCESS_SECRET = "rvuH3Ezw1xTRRk8FdMNdR1q7pkQjYTPLs70A6uKNuSeR9"
+API_KEY = ""
+API_SECRET = ""
+BEARER_TOKEN = ""
+ACCESS_TOKEN = ""
+ACCESS_SECRET = ""
 
+# Set up API environment
 auth = tweepy.OAuthHandler(API_KEY,API_SECRET)
 auth.set_access_token(ACCESS_TOKEN,ACCESS_SECRET)
 api = tweepy.API(auth)
 
-
+#setting up file with the last tweet parsed, so tweets are not repeated.
 FILE = 'last_seen_id.txt'
 
 def retrieve_id(file_name):
@@ -28,6 +29,8 @@ def store_id(last_seen_id, file_name):
     fn.close()
     return
 
+# looks for files that mention the account and checks if they tweeted an image. The image is then ran through 
+#a function called bw which converts the image to black and white.
 def BW_function():
     print('Checking for tweets')
     last_seen_id = retrieve_id(FILE)
