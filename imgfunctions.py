@@ -2,14 +2,14 @@ from PIL import Image
 from PIL import ImageEnhance
 import urllib.request
 
-
+# converts image to black and white
 def bw(img):
     urllib.request.urlretrieve(img, 'img.jpg')
     image1 = Image.open("img.jpg")
     image1 = image1.convert('L')
     image1.save("img.jpg")
     
-
+# changes the images charateristics to match that of pop culture style, deepfried.
 def deepfried(img):
     urllib.request.urlretrieve(img, 'img.jpg')
     image1 = Image.open("img.jpg")
